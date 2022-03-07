@@ -35,7 +35,7 @@ LIBFT = -L ./assets/libft/ -lft # libft library
 PRINTF = -L ./assets/ft_printf/ -lftprintf # ft_printf function
 ASSETS = assets/ft_stackadd.c assets/ft_stackdelone.c assets/ft_stacklast.c assets/ft_stacknew.c assets/ft_stacksize.c assets/ft_atoli.c 
 # Source files
-SRC = src/push_swap.c src/errors_handling.c src/parsing.c
+SRC = src/push_swap.c src/errors_handling.c src/errors_handling_util.c src/free_allocation.c src/parsing.c
 # OBJS = $(SRC:%.c=%.o)
 
 all: banner $(NAME)
