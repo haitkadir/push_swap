@@ -23,33 +23,44 @@ static	void	free_allocation(char *tmp, char *tmp2, char *result)
 		free(result);
 }
 
-static char	**join_args(int ac, char **av)
+static void	join_args_util(char *arg, char **result)
 {
-	int		i;
 	char	*tmp;
 	char	*tmp2;
-	char	*result;
 
 	tmp = NULL;
 	tmp2 = NULL;
+	tmp = ft_strjoin(arg, " ");
+	if (!tmp)
+		return (free_allocation(tmp, tmp2, *result));
+	tmp2 = *result;
+	*result = NULL;
+	if (tmp2)
+		*result = ft_strjoin(tmp2, tmp);
+	else
+		*result = ft_strdup(tmp);
+	if (!*result)
+		return (free_allocation(tmp, tmp2, *result));
+	free_allocation(tmp, tmp2, NULL);
+}
+
+static char	**join_args(int ac, char **av)
+{
+	int		i;
+	char	*result;
+	char	**args;
+
 	result = NULL;
 	i = 1;
 	while (i < ac)
 	{
-		tmp = ft_strjoin(av[i], " ");
-		if (!tmp)
-			return (free_allocation(tmp, tmp2, result), NULL);
-		tmp2 = result;
-		result = NULL;
-		if (tmp2)
-			result = ft_strjoin(tmp2, tmp);
-		else
-			result = ft_strdup(tmp);
-		if (!result)
-			return (free_allocation(tmp, tmp2, result), NULL);
+		join_args_util(av[i], &result);
 		i++;
 	}
-	return (free_allocation(tmp, tmp2, result), ft_split(result, ' '));
+	if (!result)
+		return (free_allocation(NULL, NULL, result), NULL);
+	args = ft_split(result, ' ');
+	return (free_allocation(NULL, NULL, result), args);
 }
 
 char	**parsing(int ac, char **av)

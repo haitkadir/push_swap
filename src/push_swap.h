@@ -35,7 +35,7 @@ int		check_is_empty(int ac, char **av);
 int		check_dup(int ac, char **av);
 long	ft_atoli(const char *str);
 int		check_max_int(int ac, char **av);
-int		check_is_int(int ac, char **av);
+int		check_is_number(int ac, char **av);
 int		handle_input_errs(int ac, char **args);
 /*------------------------------- Free memory --------------------------------*/
 void	free_2d_arr(char **arr);

@@ -43,7 +43,7 @@ int	check_dup(int ac, char **av)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
 		j = i + 1;
@@ -62,7 +62,7 @@ int	check_max_int(int ac, char **av)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
 		if (ft_atoli(av[i]) > 2147483647 || ft_atoli(av[i]) < -2147483648)
@@ -78,12 +78,12 @@ static	int	ft_isspace(char c)
 		|| c == '\f' || c == '\r' || c == ' ');
 }
 
-int	check_is_int(int ac, char **av)
+int	check_is_number(int ac, char **av)
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
 		j = 0;
