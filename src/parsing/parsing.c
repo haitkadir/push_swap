@@ -1,6 +1,6 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static	int	arr_len(char **arr)
+int	arr_len(char **arr)
 {
 	int	i;
 
@@ -73,6 +73,6 @@ char	**parsing(int ac, char **av)
 			NULL);
 	args = join_args(ac, av);
 	if (handle_input_errs(arr_len(args), args))
-		free_2d_arr(args);
-	return (NULL);
+		return (free_2d_arr(args), NULL);
+	return (args);
 }

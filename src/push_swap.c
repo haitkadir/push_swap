@@ -14,8 +14,13 @@
 
 int	main(int ac, char **av)
 {
+	char	**arguments;
+
 	if (ac < 2)
 		return (0);
-	parsing(ac, av);
+	arguments = parsing(ac, av);
+	if (!arguments)
+		return (0);
+	recipe(arguments);
 	return (0);
 }

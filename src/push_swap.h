@@ -17,9 +17,10 @@
 
 typedef struct t_stack
 {
-	struct t_stack	*prev;
-	int				*content;
-	struct t_stack	*next;
+	int	*a;
+	int	*b;
+	int	len;
+	int	pivot;
 }	t_stack;
 /*-------------------------------- Assets -----------------------------------*/
 t_stack	*ft_stacknew(void *content);
@@ -30,6 +31,7 @@ void	ft_stackdelone(t_stack *lst);
 /*-------------------------------- Source -----------------------------------*/
 /*-------------------------------- Parsing ----------------------------------*/
 char	**parsing(int ac, char **av);
+int		arr_len(char **arr);
 /*-------------------------------- Error ------------------------------------*/
 int		check_is_empty(int ac, char **av);
 int		check_dup(int ac, char **av);
@@ -39,4 +41,6 @@ int		check_is_number(int ac, char **av);
 int		handle_input_errs(int ac, char **args);
 /*------------------------------- Free memory --------------------------------*/
 void	free_2d_arr(char **arr);
+/*------------------------------- The recipe ---------------------------------*/
+int		recipe(char **args);
 #endif

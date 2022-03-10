@@ -33,10 +33,9 @@ NAME = push_swap # Program name
 #Assets
 LIBFT = -L ./assets/libft/ -lft # libft library
 PRINTF = -L ./assets/ft_printf/ -lftprintf # ft_printf function
-ASSETS = assets/ft_stackadd.c assets/ft_stackdelone.c assets/ft_stacklast.c assets/ft_stacknew.c assets/ft_stacksize.c assets/ft_atoli.c 
+ASSETS = assets/ft_atoli.c 
 # Source files
-SRC = src/push_swap.c src/errors_handling.c src/errors_handling_util.c src/free_allocation.c src/parsing.c
-# OBJS = $(SRC:%.c=%.o)
+SRC = src/push_swap.c src/errors/errors_handling.c src/errors/errors_handling_util.c src/free_allocation.c src/parsing/parsing.c src/the_recipe/recipe.c
 
 all: banner $(NAME)
 
@@ -52,9 +51,6 @@ $(NAME): $(SRC) $(ASSETS)
 	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(SRC) -o $(NAME)
 	@echo $(BCyan)"\npush_swap program is ready to use"$(Color_Off)
 	@echo $(BGreen)"\nUsage: ./push_swap numbers to sort here"$(Color_Off)
-
-# %.o: %.c src/push_swap.h
-# 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@make clean -C assets/libft/
