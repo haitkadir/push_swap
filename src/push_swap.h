@@ -19,7 +19,8 @@ typedef struct t_stack
 {
 	int	*a;
 	int	*b;
-	int	len;
+	int	a_len;
+	int	b_len;
 	int	pivot;
 }	t_stack;
 /*-------------------------------- Assets -----------------------------------*/
@@ -43,4 +44,21 @@ int		handle_input_errs(int ac, char **args);
 void	free_2d_arr(char **arr);
 /*------------------------------- The recipe ---------------------------------*/
 int		recipe(char **args);
+/*------------------------------- instructions -------------------------------*/
+int		shift_a(t_stack *stack);
+int		rshift_a(t_stack *stack);
+int		shift_b(t_stack *stack);
+int		rshift_b(t_stack *stack);
+
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *stack);
+void	pb(t_stack *stack);
+void	pa(t_stack *stack);
+void	ra(t_stack *stack);
+void	rb(t_stack *stack);
+void	rr(t_stack *stack);
+void	rra(t_stack *stack);
+void	rrb(t_stack *stack);
+void	rrr(t_stack *stack);
 #endif
