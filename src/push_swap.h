@@ -21,7 +21,8 @@ typedef struct t_stack
 	int	*b;
 	int	a_len;
 	int	b_len;
-	int	pivot;
+	int	pivot_a;
+	int	pivot_b;
 }	t_stack;
 /*-------------------------------- Assets -----------------------------------*/
 t_stack	*ft_stacknew(void *content);
@@ -61,4 +62,7 @@ void	rr(t_stack *stack);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
+/*------------------------------- Sorting algorithm --------------------------*/
+int		get_midpoint(int *arr, int size);
+void	quicksort(t_stack *stack, int low, int high);
 #endif

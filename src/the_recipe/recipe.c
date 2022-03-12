@@ -25,35 +25,9 @@ int	recipe(char **args)
 	stack->a_len = arr_len(args);
 	fill_stack(stack, args);
 ft_printf("\n\nstack: A\n\n");
+	quicksort(stack);
 	int i = 0;
-	int j = 0;
 	while (i < stack->a_len)
-		ft_printf("a: index %d ==> value %d:\n", j++, stack->a[i++]);
-	pb(stack);
-	pb(stack);
-	pb(stack);
-	pb(stack);
-
-	// rra(stack);
-
-ft_printf("\n\nstack: B\n\n");
-	i = 0;
-	j = 0;
-	while (i < stack->b_len)
-		ft_printf("b: index %d ==> value %d:\n", j++, stack->b[i++]);
-
-	rrr(stack);
-
-ft_printf("\n\nstack: A\n\n");
-	i = 0;
-	j = 0;
-	while (i < stack->a_len)
-		ft_printf("a: index %d ==> value %d:\n", j++, stack->a[i++]);
-
-ft_printf("\n\nstack: B\n\n");
-	i = 0;
-	j = 0;
-	while (i < stack->b_len)
-		ft_printf("b: index %d ==> value %d:\n", j++, stack->b[i++]);
+		ft_printf(" %d ", stack->a[i++]);
 	return (0);
 }

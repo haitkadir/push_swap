@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: haitkadi <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/12 18:19:57 by haitkadi          #+#    #+#              #
+#    Updated: 2022/03/12 18:20:02 by haitkadi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 define HEADER                                                                                                  
                               █████                                                           
@@ -35,7 +47,10 @@ LIBFT = -L ./assets/libft/ -lft # libft library
 PRINTF = -L ./assets/ft_printf/ -lftprintf # ft_printf function
 ASSETS = assets/ft_atoli.c 
 # Source files
-SRC = src/push_swap.c src/errors/errors_handling.c src/errors/errors_handling_util.c src/free_allocation.c src/parsing/parsing.c src/the_recipe/recipe.c src/instructions/instructions.c src/instructions/instructions_util1.c
+SRC = src/push_swap.c src/errors/errors_handling.c src/errors/errors_handling_util.c \
+src/free_allocation.c src/parsing/parsing.c src/the_recipe/recipe.c \
+src/instructions/instructions.c src/instructions/instructions_util1.c \
+src/the_recipe/get_midpoint.c src/the_recipe/quicksort.c
 
 all: banner $(NAME)
 
