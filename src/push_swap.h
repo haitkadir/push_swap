@@ -15,22 +15,20 @@
 # include "../assets/libft/libft.h"
 # include "../assets/ft_printf/ft_printf.h"
 
+/*================================ Source ===================================*/
+
 typedef struct t_stack
 {
 	int	*a;
-	int	*b;
 	int	a_len;
-	int	b_len;
 	int	pivot_a;
+	int	track_a;
+	int	*b;
+	int	b_len;
 	int	pivot_b;
+	int	track_b;
 }	t_stack;
-/*-------------------------------- Assets -----------------------------------*/
-t_stack	*ft_stacknew(void *content);
-void	ft_stackadd(t_stack **lst, t_stack *new);
-int		ft_stacksize(t_stack *lst);
-t_stack	*ft_stacklast(t_stack *lst);
-void	ft_stackdelone(t_stack *lst);
-/*-------------------------------- Source -----------------------------------*/
+
 /*-------------------------------- Parsing ----------------------------------*/
 char	**parsing(int ac, char **av);
 int		arr_len(char **arr);
@@ -43,8 +41,6 @@ int		check_is_number(int ac, char **av);
 int		handle_input_errs(int ac, char **args);
 /*------------------------------- Free memory --------------------------------*/
 void	free_2d_arr(char **arr);
-/*------------------------------- The recipe ---------------------------------*/
-int		recipe(char **args);
 /*------------------------------- instructions -------------------------------*/
 int		shift_a(t_stack *stack);
 int		rshift_a(t_stack *stack);
@@ -64,5 +60,13 @@ void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
 /*------------------------------- Sorting algorithm --------------------------*/
 int		get_midpoint(int *arr, int size);
-void	quicksort(t_stack *stack, int low, int high);
+int		sorted(int *arr, int len);
+/*------------------------------- Push to B ---------------------------------*/
+int		n_to_pb(t_stack *stack, int len);
+int		best_move_a(t_stack *stack);
+void	push_b(t_stack *stack, int len);
+
+void	quicksort(t_stack *stack);
+/*------------------------------- The recipe ---------------------------------*/
+int		recipe(char **args);
 #endif

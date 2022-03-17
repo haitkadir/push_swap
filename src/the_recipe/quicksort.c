@@ -1,22 +1,19 @@
 #include "../push_swap.h"
 
-void	quicksort(t_stack *stack, int low, int high)
+int	sorted(int *arr, int len)
 {
 	int i;
-	int pi;
 
 	i = 0;
-	if (low < high)
+	while (i < len - 1)
 	{
-		stack->pivot_a = get_midpoint(stack->a, stack->a_len);
-		while (i < stack->a_len)
-		{
-			if (stack->a[i] < stack->pivot_a)
-			{
-				int pi = partition(stack->a, low, high); 
-				quickSort(stack, low, pi - 1);
-				quickSort(stack, pi + 1, high);
-			}
-		}
+		if (arr[i] > arr[i + 1])
+			return (1);
 	}
+	return (0);
+}
+
+void	quicksort(t_stack *stack)
+{
+	push_b(stack, stack->a_len);
 }

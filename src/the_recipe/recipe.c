@@ -25,7 +25,7 @@ int	recipe(char **args)
 	stack->a_len = arr_len(args);
 	fill_stack(stack, args);
 ft_printf("\n\nstack: A\n\n");
-	quicksort(stack);
+	// quicksort(stack);
 	int i = 0;
 	while (i < stack->a_len)
 		ft_printf(" %d ", stack->a[i++]);

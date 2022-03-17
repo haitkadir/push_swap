@@ -50,7 +50,8 @@ ASSETS = assets/ft_atoli.c
 SRC = src/push_swap.c src/errors/errors_handling.c src/errors/errors_handling_util.c \
 src/free_allocation.c src/parsing/parsing.c src/the_recipe/recipe.c \
 src/instructions/instructions.c src/instructions/instructions_util1.c \
-src/the_recipe/get_midpoint.c src/the_recipe/quicksort.c
+src/the_recipe/get_midpoint.c src/the_recipe/quicksort.c src/the_recipe/push_b.c \
+src/the_recipe/push_b_util.c  src/the_recipe/push_a.c
 
 all: banner $(NAME)
 
