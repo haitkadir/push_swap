@@ -3,14 +3,11 @@
 static	void	fill_stack(t_stack *stack, char **args)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = stack->a_len - 1;
 	while (i < stack->a_len)
 	{
-		stack->a[i] = ft_atoi(args[j]);
-		j--;
+		stack->a[i] = ft_atoi(args[i]);
 		i++;
 	}
 }
@@ -24,8 +21,8 @@ int	recipe(char **args)
 	stack->b = (int *)ft_calloc(arr_len(args), sizeof(int));
 	stack->a_len = arr_len(args);
 	fill_stack(stack, args);
+	quicksort(stack);
 ft_printf("\n\nstack: A\n\n");
-	// quicksort(stack);
 	int i = 0;
 	while (i < stack->a_len)
 		ft_printf(" %d ", stack->a[i++]);

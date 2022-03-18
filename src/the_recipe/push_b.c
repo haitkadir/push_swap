@@ -6,13 +6,13 @@ static	void	sort_tow(t_stack *stack)
 		sa(stack);
 }
 
-static	void	first_move(t_stack *stack)
+static	void	first_move(t_stack *stack, int *len)
 {
 	int	len_to_pb;
 	int	moves;
 
 	moves = 0;
-	len_to_pb = n_to_pb(stack->a, stack->a_len);
+	len_to_pb = n_to_pb(stack, stack->a_len);
 	while (len_to_pb)
 	{
 		moves = best_move_a(stack);
@@ -27,16 +27,17 @@ static	void	first_move(t_stack *stack)
 			moves++;
 		}
 		pb(stack);
+		*len -= 1;
 		len_to_pb--;
 	}
 }
 
-static void	socend_move(t_stack *stack, int len)
+static void	socend_move(t_stack *stack, int *len)
 {
 	int	len_to_pb;
 	int	i;
 
-	len_to_pb = n_to_pb(stack->a, len);
+	len_to_pb = n_to_pb(stack, *len);
 	while (len_to_pb)
 	{
 		i = 0;
@@ -47,14 +48,20 @@ static void	socend_move(t_stack *stack, int len)
 			stack->track_a++;
 		}
 		pb(stack);
+		*len -= 1;
 		len_to_pb--;
+	}
+	while (stack->track_a)
+	{
+		rrb(stack);
+		stack->track_a--;
 	}
 }
 
-static	void	push_b_util(t_stack *stack, int len)
+static	void	push_b_util(t_stack *stack, int *len)
 {
-	if (len == stack->a_len)
-		first_move(stack);
+	if (*len == stack->a_len)
+		first_move(stack, len);
 	else
 		socend_move(stack, len);
 }
@@ -67,5 +74,6 @@ void	push_b(t_stack *stack, int len)
 		sort_tow(stack);
 		return ;
 	}
-	push_b_util(stack, len);
+	push_b_util(stack, &len);
+	push_b(stack, len);
 }
