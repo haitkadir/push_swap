@@ -41,9 +41,9 @@ static void	socend_move(t_stack *stack, int *len)
 	while (len_to_pb)
 	{
 		i = 0;
-		while (stack->a[i] >= stack->pivot_a)
+		while (stack->a[0] >= stack->pivot_a)
 		{
-			rb(stack);
+			ra(stack);
 			i++;
 			stack->track_a++;
 		}
@@ -53,7 +53,7 @@ static void	socend_move(t_stack *stack, int *len)
 	}
 	while (stack->track_a)
 	{
-		rrb(stack);
+		rra(stack);
 		stack->track_a--;
 	}
 }
@@ -68,12 +68,18 @@ static	void	push_b_util(t_stack *stack, int *len)
 
 void	push_b(t_stack *stack, int len)
 {
+	int	len_to_push;
+
 	stack->pivot_a = get_midpoint(stack->a, len);
-	if (len < 3)
+	len_to_push = n_to_pb(stack, len);
+	if (len == 2)
 	{
 		sort_tow(stack);
 		return ;
 	}
+	else if (len == 1)
+		return ;
 	push_b_util(stack, &len);
 	push_b(stack, len);
+	push_a(stack, len_to_push);
 }

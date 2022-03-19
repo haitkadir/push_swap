@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-int	n_to_pb(t_stack *stack, int len)
+int	n_to_pa(t_stack *stack, int len)
 {
 	int	i;
 	int	res;
@@ -9,7 +9,7 @@ int	n_to_pb(t_stack *stack, int len)
 	res = 0;
 	while (i < len)
 	{
-		if (stack->a[i] < stack->pivot_a)
+		if (stack->b[i] >= stack->pivot_b)
 			res++;
 		i++;
 	}
@@ -26,7 +26,7 @@ int	best_move_b(t_stack *stack)
 	final_moves = stack->b_len / 2;
 	while (i < stack->b_len)
 	{
-		if (stack->b[i] >= stack->pivot_b)
+		if (stack->b[i] > stack->pivot_b)
 		{
 			moves = i;
 			if (i > stack->b_len / 2)

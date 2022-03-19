@@ -66,7 +66,11 @@ int		n_to_pb(t_stack *stack, int len);
 int		best_move_a(t_stack *stack);
 void	push_b(t_stack *stack, int len);
 
+/*------------------------------- Push to A ---------------------------------*/
+void	push_a(t_stack *stack, int len);
+int		n_to_pa(t_stack *stack, int len);
 void	quicksort(t_stack *stack);
+int		best_move_b(t_stack *stack);
 /*------------------------------- The recipe ---------------------------------*/
 int		recipe(char **args);
 #endif
