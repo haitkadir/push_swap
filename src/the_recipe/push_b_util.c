@@ -16,21 +16,21 @@ int	n_to_pb(t_stack *stack, int len)
 	return (res);
 }
 
-int	best_move_b(t_stack *stack)
+int	best_move_a(t_stack *stack)
 {
 	int	i;
 	int	moves;
 	int	final_moves;
 
 	i = 0;
-	final_moves = stack->b_len / 2;
-	while (i < stack->b_len)
+	final_moves = stack->a_len / 2;
+	while (i < stack->a_len)
 	{
-		if (stack->b[i] >= stack->pivot_b)
+		if (stack->a[i] < stack->pivot_a)
 		{
 			moves = i;
-			if (i > stack->b_len / 2)
-				moves = (stack->b_len - i) * -1;
+			if (i > stack->a_len / 2)
+				moves = (stack->a_len - i) * -1;
 			if (abs(moves) < abs(final_moves))
 				final_moves = moves;
 		}
