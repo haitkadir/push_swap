@@ -24,7 +24,10 @@ static	void	first_move(t_stack *stack, int *len, int len_to_pa)
 			rrb(stack);
 			moves++;
 		}
-		pa(stack);
+		// if (stack->b[0] >= stack->pivot_b)
+			pa(stack);
+		// else
+		// 	continue;
 		*len -= 1;
 		len_to_pa--;
 	}

@@ -23,7 +23,7 @@ int	best_move_a(t_stack *stack)
 	int	final_moves;
 
 	i = 0;
-	final_moves = stack->a_len / 2;
+	final_moves = 0;
 	while (i < stack->a_len)
 	{
 		if (stack->a[i] < stack->pivot_a)
@@ -31,6 +31,8 @@ int	best_move_a(t_stack *stack)
 			moves = i;
 			if (i > stack->a_len / 2)
 				moves = (stack->a_len - i) * -1;
+			if (final_moves == 0)
+				final_moves = moves;
 			if (abs(moves) < abs(final_moves))
 				final_moves = moves;
 		}

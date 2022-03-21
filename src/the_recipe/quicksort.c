@@ -8,14 +8,13 @@ int	sorted(int *arr, int len)
 	while (i < len - 1)
 	{
 		if (arr[i] > arr[i + 1])
-			return (1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 void	quicksort(t_stack *stack)
 {
 	push_b(stack, stack->a_len);
-	// push_a(stack, stack->b_len);
 }
