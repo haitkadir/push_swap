@@ -59,7 +59,8 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
 /*------------------------------- Sorting algorithm --------------------------*/
-int		get_midpoint(int *arr, int size);
+int		get_midpoint_a(t_stack *stack, int chanck_len);
+int		get_midpoint_b(t_stack *stack, int chanck_len);
 int		sorted(int *arr, int len);
 /*------------------------------- Push to B ---------------------------------*/
 int		n_to_pb(t_stack *stack, int len);

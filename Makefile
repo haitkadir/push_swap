@@ -40,7 +40,7 @@ BWhite='\033[1;37m'       # White
 IGreen='\033[0;92m'       # Green
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror # flags
+#CFLAGS = -Wall -Wextra -Werror # flags
 NAME = push_swap # Program name
 #Assets
 LIBFT = -L ./assets/libft/ -lft # libft library
@@ -50,8 +50,9 @@ ASSETS = assets/ft_atoli.c
 SRC = src/push_swap.c src/errors/errors_handling.c src/errors/errors_handling_util.c \
 src/free_allocation.c src/parsing/parsing.c src/the_recipe/recipe.c \
 src/instructions/instructions.c src/instructions/instructions_util1.c \
-src/the_recipe/get_midpoint.c src/the_recipe/quicksort.c src/the_recipe/push_b.c \
-src/the_recipe/push_b_util.c src/the_recipe/push_a_util.c src/the_recipe/push_a.c
+src/the_recipe/get_midpoint_a.c src/the_recipe/quicksort.c src/the_recipe/push_b.c \
+src/the_recipe/push_b_util.c src/the_recipe/push_a_util.c src/the_recipe/push_a.c \
+src/the_recipe/get_midpoint_b.c 
 
 all: banner $(NAME)
 

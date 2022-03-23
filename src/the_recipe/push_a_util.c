@@ -24,6 +24,8 @@ int	best_move_b(t_stack *stack)
 
 	i = 0;
 	final_moves = 0;
+	if (stack->b[0] >= stack->pivot_b)
+		return (0);
 	while (i < stack->b_len)
 	{
 		if (stack->b[i] >= stack->pivot_b)

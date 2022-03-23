@@ -27,8 +27,10 @@ void	sb(t_stack *stack)
 
 void	ss(t_stack *stack)
 {
-	sa(stack);
-	sb(stack);
+	if (stack->a_len < 2 || stack->b_len < 2)
+		return ;
+	swap(&stack->a[0], &stack->a[1]);
+	swap(&stack->b[0], &stack->b[1]);
 	ft_printf("ss\n");
 }
 
