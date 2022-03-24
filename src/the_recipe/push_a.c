@@ -2,17 +2,19 @@
 
 static	void	sort_tow(t_stack *stack)
 {
-	if (stack->b[stack->b_len - 1] >= stack->pivot_b)
+	if (stack->b[stack->b_len - 1] >= stack->pivot_b && stack->b_len > 3)
 		rrb(stack);
-	if (stack->b[stack->b_len - 1] >= stack->pivot_b)
+	if (stack->b[stack->b_len - 1] >= stack->pivot_b && stack->b_len > 3)
 		rrb(stack);
-	if (stack->b[0] < stack->b[1])
+	if (stack->b[0] < stack->b[1] && stack->a[0] > stack->a[1])
+		ss(stack);
+	else if (stack->b[0] < stack->b[1])
 		sb(stack);
 	pa(stack);
 	pa(stack);
 }
 
-static	void	first_move(t_stack *stack, int *len, int len_to_pa)
+static	void	push_a_util(t_stack *stack, int *len, int len_to_pa)
 {
 	int	moves;
 
@@ -23,24 +25,17 @@ static	void	first_move(t_stack *stack, int *len, int len_to_pa)
 		while (moves > 0)
 		{
 			rb(stack);
-			stack->track_b++;
 			moves--;
 		}
 		while (moves < 0)
 		{
 			rrb(stack);
-			stack->track_a--;
 			moves++;
 		}
 		pa(stack);
 		*len -= 1;
 		len_to_pa--;
 	}
-}
-
-static	void	push_a_util(t_stack *stack, int *len, int len_to_pa)
-{
-	first_move(stack, len, len_to_pa);
 }
 
 void	push_a(t_stack *stack, int len)
@@ -56,7 +51,7 @@ void	push_a(t_stack *stack, int len)
 	}
 	else if (len == 1)
 	{
-	if (stack->b[stack->b_len - 1] >= stack->pivot_b)
+	if (stack->b[stack->b_len - 1] >= stack->pivot_b && stack->b_len > 3)
 			rrb(stack);
 		pa(stack);
 		return ;

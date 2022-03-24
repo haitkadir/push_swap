@@ -2,15 +2,17 @@
 
 static	void	sort_tow(t_stack *stack)
 {
-	if (stack->a[stack->a_len - 1] <= stack->pivot_a)
+	if (stack->a[stack->a_len - 1] <= stack->pivot_a  && stack->a_len > 3)
 		rra(stack);
-	if (stack->a[stack->a_len - 1] <= stack->pivot_a)
+	if (stack->a[stack->a_len - 1] <= stack->pivot_a  && stack->a_len > 3)
 		rra(stack);
-	if (stack->a[0] > stack->a[1])
+	if (stack->a[0] > stack->a[1] && stack->b[0] < stack->b[1])
+		ss(stack);
+	else if (stack->a[0] > stack->a[1])
 		sa(stack);
 }
 
-static	void	first_move(t_stack *stack, int *len, int len_to_pb)
+static	void	push_b_util(t_stack *stack, int *len, int len_to_pb)
 {
 	int	moves;
 
@@ -21,13 +23,11 @@ static	void	first_move(t_stack *stack, int *len, int len_to_pb)
 		while (moves > 0)
 		{
 			ra(stack);
-			stack->track_a++;
 			moves--;
 		}
 		while (moves < 0)
 		{
 			rra(stack);
-			stack->track_a--;
 			moves++;
 		}
 		pb(stack);
@@ -36,18 +36,14 @@ static	void	first_move(t_stack *stack, int *len, int len_to_pb)
 	}
 }
 
-
-static	void	push_b_util(t_stack *stack, int *len, int len_to_pb)
-{
-	first_move(stack, len, len_to_pb);
-}
-
 void	push_b(t_stack *stack, int len)
 {
 	int	len_to_push;
 
 	stack->pivot_a = get_midpoint_a(stack, len);
 	len_to_push = n_to_pb(stack, stack->a_len);
+	// if (is_sorted_a(stack, len))
+	// 	ft_printf("=====================================hello=======================\n");
 	if (len == 2)
 	{
 		sort_tow(stack);
@@ -55,7 +51,7 @@ void	push_b(t_stack *stack, int len)
 	}
 	else if (len == 1)
 	{
-	if (stack->a[stack->a_len - 1] <= stack->pivot_a)
+	if (stack->a[stack->a_len - 1] <= stack->pivot_a && stack->a_len > 3)
 		rra(stack);
 		return ;
 	}

@@ -17,13 +17,15 @@ static int partition(int arr[], int low, int high)
 
 	pivot = arr[high];
 	i = (low - 1);
-	for (j = low; j < high; j++)
+	j = low;
+	while (j < high)
 	{
 		if (arr[j] >= pivot)
 		{
 			i++;
 			swap(&arr[i], &arr[j]);
 		}
+		j++;
 	}
 	swap(&arr[i + 1], &arr[high]);
 	return (i + 1);
