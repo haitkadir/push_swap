@@ -12,6 +12,8 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# include <limits.h>
+# include <stdlib.h>
 # include "../assets/libft/libft.h"
 # include "../assets/ft_printf/ft_printf.h"
 
@@ -22,11 +24,14 @@ typedef struct t_stack
 	int	*a;
 	int	a_len;
 	int	pivot_a;
-	int	track_a;
+	int a_chunck_min;
+	int a_chunck_max;
+
 	int	*b;
 	int	b_len;
 	int	pivot_b;
-	int	track_b;
+	int b_chunck_min;
+	int b_chunck_max;
 }	t_stack;
 
 /*-------------------------------- Parsing ----------------------------------*/
@@ -35,7 +40,7 @@ int		arr_len(char **arr);
 /*-------------------------------- Error ------------------------------------*/
 int		check_is_empty(int ac, char **av);
 int		check_dup(int ac, char **av);
-long	ft_atoli(const char *str);
+long	ft_atol(const char *str);
 int		check_max_int(int ac, char **av);
 int		check_is_number(int ac, char **av);
 int		handle_input_errs(int ac, char **args);
@@ -59,20 +64,21 @@ void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
 /*------------------------------- Sorting algorithm --------------------------*/
-int		get_midpoint_a(t_stack *stack, int chanck_len);
-int		get_midpoint_b(t_stack *stack, int chanck_len);
+int		get_midpoint_a(t_stack *stack, int chanck_len, int fixed_len);
+int		get_midpoint_b(t_stack *stack, int chanck_len, int fixed_len);
 int		is_sorted_a(t_stack *stack, int len);
 int		is_sorted_b(t_stack *stack, int len);
 /*------------------------------- Push to B ---------------------------------*/
 int		n_to_pb(t_stack *stack, int len);
 int		best_move_a(t_stack *stack);
-void	push_b(t_stack *stack, int len);
+void	push_b(t_stack *stack, int len, int fixed_len);
 
 /*------------------------------- Push to A ---------------------------------*/
-void	push_a(t_stack *stack, int len);
 int		n_to_pa(t_stack *stack, int len);
-void	quicksort(t_stack *stack);
 int		best_move_b(t_stack *stack);
+void	push_a(t_stack *stack, int len, int fixed_len);
+/*------------------------------- quicksort ---------------------------------*/
+void	quicksort(t_stack *stack);
 /*------------------------------- The recipe ---------------------------------*/
 int		recipe(char **args);
 #endif

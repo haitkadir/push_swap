@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 		return (0);
 	arguments = parsing(ac, av);
 	if (!arguments)
-		return (0);
+		return (-1);
 	recipe(arguments);
+
 	return (0);
 }

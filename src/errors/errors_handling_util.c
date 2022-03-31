@@ -65,7 +65,7 @@ int	check_max_int(int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		if (ft_atoli(av[i]) > 2147483647 || ft_atoli(av[i]) < -2147483648)
+		if (ft_atol(av[i]) > 2147483647 || ft_atol(av[i]) < -2147483648)
 			return (1);
 		i++;
 	}

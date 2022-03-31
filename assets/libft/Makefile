@@ -9,15 +9,6 @@
 #    Updated: 2021/11/21 01:11:38 by haitkadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# Reset
-Color_Off='\033[0m'       # Text Reset
-
-# Regular Colors
-Red='\033[0;31m'          # Red
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 NAME = libft.a
@@ -39,25 +30,25 @@ BONUS_OBJECTS = $(BONUS_SOURCES:%.c=%.o)
 
 $(NAME) : $(OBJECTS)
 	@ar rcs $(NAME) $(OBJECTS)
-	@echo $(Cyan)"\nArchive library created successfuly"$(Color_Off)
+	@echo "\nArchive library created successfuly"
 
 bonus: all $(BONUS_OBJECTS)
 	@ar rcs $(NAME) $(BONUS_OBJECTS)
-	@echo $(Cyan)"\nBonus files added to your library"$(Color_Off)
+	@echo "\nBonus files added to your library"
 
 all: $(NAME)
 
 %.o : %.c libft.h
 	@$(CC) $(FLAGS) -o $@ -c $<
-	@echo $(Purple)"\nCreated\t$@\tfrom\t$<\tfile"$(Color_Off)
+	@echo "\nCreated\t$@\tfrom\t$<\tfile"
 
 clean:
 	@rm -f *.o
-	@echo $(Red)"\nObject files cleaned successfuly"$(Color_Off)
+	@echo "\nObject files cleaned successfuly"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo $(Red)"\nFull cleaning applied successfuly"$(Color_Off)
+	@echo "\nFull cleaning applied successfuly"
 
 re: fclean all
 

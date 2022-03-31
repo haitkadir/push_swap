@@ -14,6 +14,9 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h> 
+# include <limits.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 typedef struct t_flags
 {

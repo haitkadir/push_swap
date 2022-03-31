@@ -11,7 +11,7 @@ static	void	swap(int *a, int *b)
 
 void	sa(t_stack *stack)
 {
-	if (stack->a_len < 2)
+	if (stack->a_len == 0)
 		return ;
 	swap(&stack->a[0], &stack->a[1]);
 	ft_printf("sa\n");
@@ -19,7 +19,7 @@ void	sa(t_stack *stack)
 
 void	sb(t_stack *stack)
 {
-	if (stack->b_len < 2)
+	if (stack->b_len == 0)
 		return ;
 	swap(&stack->b[0], &stack->b[1]);
 	ft_printf("sb\n");
@@ -66,7 +66,7 @@ void	ra(t_stack *stack)
 {
 	int	tmp;
 
-	if (stack->a_len < 2)
+	if (stack->a_len == 0)
 		return ;
 	tmp = shift_a(stack);
 	stack->a[stack->a_len - 1] = tmp;
@@ -77,7 +77,7 @@ void	rb(t_stack *stack)
 {
 	int	tmp;
 
-	if (stack->b_len < 2)
+	if (stack->b_len == 0)
 		return ;
 	tmp = shift_b(stack);
 	stack->b[stack->b_len - 1] = tmp;
@@ -95,7 +95,7 @@ void	rra(t_stack *stack)
 {
 	int	tmp;
 
-	if (stack->a_len < 2)
+	if (stack->a_len == 0)
 		return ;
 	tmp = rshift_a(stack);
 	stack->a[0] = tmp;
@@ -106,7 +106,7 @@ void	rrb(t_stack *stack)
 {
 	int	tmp;
 
-	if (stack->b_len < 2)
+	if (stack->b_len == 0)
 		return ;
 	tmp = rshift_b(stack);
 	stack->b[0] = tmp;

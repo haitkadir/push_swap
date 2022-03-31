@@ -6,10 +6,10 @@ static	int	ft_isspace(char c)
 		|| c == '\f' || c == '\r' || c == ' ');
 }
 
-long	ft_atoli(const char *str)
+long	ft_atol(const char *str)
 {
 	size_t	i;
-	size_t	result;
+	long	result;
 	int		sign;
 
 	i = 0;
@@ -27,6 +27,10 @@ long	ft_atoli(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 		return (0);
 	while (ft_isdigit(str[i]))
+	{
 		result = result * 10 + (str[i++] - 48);
+		if (result < INT_MIN || result > INT_MAX)
+			return (2147483649);
+	}
 	return (result * sign);
 }

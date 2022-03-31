@@ -45,7 +45,7 @@ NAME = push_swap # Program name
 #Assets
 LIBFT = -L ./assets/libft/ -lft # libft library
 PRINTF = -L ./assets/ft_printf/ -lftprintf # ft_printf function
-ASSETS = assets/ft_atoli.c 
+ASSETS = assets/ft_atol.c 
 # Source files
 SRC = src/push_swap.c src/errors/errors_handling.c src/errors/errors_handling_util.c \
 src/free_allocation.c src/parsing/parsing.c src/the_recipe/recipe.c \
