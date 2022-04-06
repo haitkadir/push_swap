@@ -15,14 +15,20 @@
 int	handle_input_errs(int len, char **args)
 {
 	if (!args)
-		return (ft_printf("\033[1;31mError:\033[4;31mAllocation faild\033[0m\n"), \
+		return (\
+		ft_putstr_fd("\033[1;31mError:\033[4;31mAllocation faild\033[0m\n", 2), \
 		1);
 	if (check_is_number(len, args))
-		return (ft_printf("\033[1;31mError:\033[4;31mNone integer value\033[0m\n"), \
+		return (\
+		ft_putstr_fd("\033[1;31mError:\033[4;31mNone integer value\033[0m\n", 2), \
 		1);
 	if (check_dup(len, args))
-		return (ft_printf("\033[1;31mError:\033[4;31mDuplicate found\033[0m\n"), 1);
+		return (\
+		ft_putstr_fd("\033[1;31mError:\033[4;31mDuplicate found\033[0m\n", 2), 1);
 	if (check_max_int(len, args))
-		return (ft_printf("\033[1;31mError:\033[4;31mInt overflow\033[0m\n"), 1);
+		return (\
+		ft_putstr_fd("\033[1;31mError:\033[4;31mInt overflow\033[0m\n", 2), 1);
+	if (len < 2)
+		return (1);
 	return (0);
 }

@@ -65,17 +65,11 @@ int	check_max_int(int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		if (ft_atol(av[i]) > 2147483647 || ft_atol(av[i]) < -2147483648)
+		if (ft_atol(av[i]) > INT_MAX || ft_atol(av[i]) < INT_MIN)
 			return (1);
 		i++;
 	}
 	return (0);
-}
-
-static	int	ft_isspace(char c)
-{
-	return (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ');
 }
 
 int	check_is_number(int ac, char **av)
@@ -89,12 +83,12 @@ int	check_is_number(int ac, char **av)
 		j = 0;
 		if (av[i][j])
 		{
-			while (ft_isspace(av[i][j]))
-				j++;
-			if (!ft_isdigit(av[i][j]) && !ft_strchr("-+", av[i][j++]))
+			if (!ft_isdigit(av[i][j]) && !ft_strchr("-+", av[i][j]))
 				return (1);
 			else
 			{
+				if (ft_strlen(av[i]) > 1)
+					j++;
 				while (av[i][j] && ft_isdigit(av[i][j]))
 					j++;
 				if (av[i][j] != 0)

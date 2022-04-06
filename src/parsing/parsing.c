@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: haitkadi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/04 18:23:49 by haitkadi          #+#    #+#             */
+/*   Updated: 2022/04/04 18:23:52 by haitkadi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	arr_len(char **arr)
@@ -69,7 +81,8 @@ char	**parsing(int ac, char **av)
 
 	args = NULL;
 	if (check_is_empty(ac, av))
-		return (ft_printf("\033[1;31mError:\033[4;31mEmpty argument\033[0m\n"),
+		return (\
+		ft_putstr_fd("\033[1;31mError:\033[4;31mEmpty argument\033[0m\n", 2),
 			NULL);
 	args = join_args(ac, av);
 	if (handle_input_errs(arr_len(args), args))

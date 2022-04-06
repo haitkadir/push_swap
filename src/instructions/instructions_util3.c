@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   instructions_util3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haitkadi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 17:03:39 by haitkadi          #+#    #+#             */
-/*   Updated: 2022/03/03 17:03:43 by haitkadi         ###   ########.fr       */
+/*   Created: 2022/04/05 00:42:20 by haitkadi          #+#    #+#             */
+/*   Updated: 2022/04/05 00:42:23 by haitkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int ac, char **av)
+void	ss(t_stack *stack, char flag)
 {
-	char	**arguments;
+	sa(stack, 0);
+	sb(stack, 0);
+	if (flag)
+		ft_printf("ss\n");
+}
 
-	if (ac > 1)
-	{
-		arguments = parsing(ac, av);
-		if (!arguments)
-			return (-1);
-		recipe(arguments);
-	}
-	return (0);
+void	rr(t_stack *stack, char flag)
+{
+	ra(stack, 0);
+	rb(stack, 0);
+	if (flag)
+		ft_printf("rr\n");
+}
+
+void	rrr(t_stack *stack, char flag)
+{
+	rra(stack, 0);
+	rrb(stack, 0);
+	if (flag)
+		ft_printf("rrr\n");
 }

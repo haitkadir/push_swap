@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+::+:    		:+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haitkadi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 17:03:39 by haitkadi          #+#    #+#             */
-/*   Updated: 2022/03/03 17:03:43 by haitkadi         ###   ########.fr       */
+/*   Created: 2021/11/22 21:51:39 by haitkadi          #+#    #+#             */
+/*   Updated: 2021/11/22 21:51:41 by haitkadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(int ac, char **av)
-{
-	char	**arguments;
+# include <unistd.h>
+# include <stdlib.h>
 
-	if (ac > 1)
-	{
-		arguments = parsing(ac, av);
-		if (!arguments)
-			return (-1);
-		recipe(arguments);
-	}
-	return (0);
-}
+size_t	ft_strlen(const char *s);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*get_next_line(int fd);
+
+#endif

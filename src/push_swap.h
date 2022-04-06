@@ -24,14 +24,14 @@ typedef struct t_stack
 	int	*a;
 	int	a_len;
 	int	pivot_a;
-	int a_chunck_min;
-	int a_chunck_max;
+	int	a_chunck_min;
+	int	a_chunck_max;
 
 	int	*b;
 	int	b_len;
 	int	pivot_b;
-	int b_chunck_min;
-	int b_chunck_max;
+	int	b_chunck_min;
+	int	b_chunck_max;
 }	t_stack;
 
 /*-------------------------------- Parsing ----------------------------------*/
@@ -47,27 +47,28 @@ int		handle_input_errs(int ac, char **args);
 /*------------------------------- Free memory --------------------------------*/
 void	free_2d_arr(char **arr);
 /*------------------------------- instructions -------------------------------*/
+void	swap(int *a, int *b);
 int		shift_a(t_stack *stack);
 int		rshift_a(t_stack *stack);
 int		shift_b(t_stack *stack);
 int		rshift_b(t_stack *stack);
 
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
-void	ss(t_stack *stack);
-void	pb(t_stack *stack);
-void	pa(t_stack *stack);
-void	ra(t_stack *stack);
-void	rb(t_stack *stack);
-void	rr(t_stack *stack);
-void	rra(t_stack *stack);
-void	rrb(t_stack *stack);
-void	rrr(t_stack *stack);
+void	sa(t_stack *stack, char flag);
+void	sb(t_stack *stack, char flag);
+void	ss(t_stack *stack, char flag);
+void	pb(t_stack *stack, char flag);
+void	pa(t_stack *stack, char flag);
+void	ra(t_stack *stack, char flag);
+void	rb(t_stack *stack, char flag);
+void	rr(t_stack *stack, char flag);
+void	rra(t_stack *stack, char flag);
+void	rrb(t_stack *stack, char flag);
+void	rrr(t_stack *stack, char flag);
 /*------------------------------- Sorting algorithm --------------------------*/
 int		get_midpoint_a(t_stack *stack, int chanck_len, int fixed_len);
 int		get_midpoint_b(t_stack *stack, int chanck_len, int fixed_len);
-int		is_sorted_a(t_stack *stack, int len);
-int		is_sorted_b(t_stack *stack, int len);
+int		is_sorted_a(t_stack *stack, int len, int fixed_len);
+int		is_sorted_b(t_stack *stack, int len, int fixed_len);
 /*------------------------------- Push to B ---------------------------------*/
 int		n_to_pb(t_stack *stack, int len);
 int		best_move_a(t_stack *stack);
