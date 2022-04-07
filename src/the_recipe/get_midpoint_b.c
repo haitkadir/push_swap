@@ -64,6 +64,26 @@ static	void	quick_sort(int *arr, int low, int high)
 	}
 }
 
+
+// static	void	bubbleSort(int *arr, int n)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < n - 1)
+// 	{
+// 		j = 0;
+// 		while (j < (n-i-1))
+// 		{
+// 			if (arr[j] > arr[j+1])
+// 				swap(&arr[j], &arr[j+1]);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
 int	get_midpoint_b(t_stack *stack, int chanck_len, int fixed_len)
 {
 	int	i;
@@ -75,6 +95,7 @@ int	get_midpoint_b(t_stack *stack, int chanck_len, int fixed_len)
 	if (!newarr)
 		exit(-1);
 	quick_sort(newarr, 0, stack->b_len - 1);
+	// bubbleSort(newarr, stack->b_len);
 	i = (chanck_len / 2);
 	res = newarr[i];
 	if (chanck_len == fixed_len)
@@ -85,5 +106,3 @@ int	get_midpoint_b(t_stack *stack, int chanck_len, int fixed_len)
 	free(newarr);
 	return (res);
 }
-
-

@@ -14,6 +14,8 @@
 
 void	ss(t_stack *stack, char flag)
 {
+	if (stack->a_len < 2 || stack->b_len < 2)
+		return ;
 	sa(stack, 0);
 	sb(stack, 0);
 	if (flag)
@@ -22,6 +24,8 @@ void	ss(t_stack *stack, char flag)
 
 void	rr(t_stack *stack, char flag)
 {
+	if (stack->a_len < 2 || stack->b_len < 2)
+		return ;
 	ra(stack, 0);
 	rb(stack, 0);
 	if (flag)
@@ -30,6 +34,8 @@ void	rr(t_stack *stack, char flag)
 
 void	rrr(t_stack *stack, char flag)
 {
+	if (stack->a_len < 2 || stack->b_len < 2)
+		return ;
 	rra(stack, 0);
 	rrb(stack, 0);
 	if (flag)

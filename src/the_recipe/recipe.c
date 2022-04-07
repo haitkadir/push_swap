@@ -14,6 +14,31 @@ static	void	fill_stack(t_stack *stack, char **args)
 	free(args);
 }
 
+static void print_a(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("\n\n==== Stack A ====\n\n");
+	while (i < stack->a_len)
+	{
+		ft_printf("%d\n", stack->a[i]);
+		i++;
+	}
+}
+static void print_b(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("\n\n==== Stack B ====\n\n");
+	while (i < stack->b_len)
+	{
+		ft_printf("%d\n", stack->b[i]);
+		i++;
+	}
+}
+
 int	recipe(char **args)
 {
 	t_stack	*stack;
@@ -24,6 +49,14 @@ int	recipe(char **args)
 	stack->a_len = arr_len(args);
 	fill_stack(stack, args);
 	quicksort(stack);
+		// print_a(stack);
+	// int i = 0;
+	// while (i < 100)
+	// {
+	// 	pb(stack, 0);
+	// 	i++;
+	// }
+	// print_b(stack);
 	if (stack->a)
 		free(stack->a);
 	if (stack->b)
@@ -31,4 +64,4 @@ int	recipe(char **args)
 	if (stack)
 		free(stack);
 	exit (0);
-} 
+}

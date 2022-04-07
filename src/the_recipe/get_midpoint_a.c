@@ -30,7 +30,7 @@ static	int	*ft_intdup(t_stack *stack)
 	return (arr);
 }
 
-static	int	partition(int arr[], int low, int high)
+static	int	partition(int *arr, int low, int high)
 {
 	int	pivot;
 	int	i;
@@ -41,7 +41,7 @@ static	int	partition(int arr[], int low, int high)
 	j = low;
 	while (j < high)
 	{
-		if (arr[j] <= pivot)
+		if (arr[j] < pivot)
 		{
 			i++;
 			swap(&arr[i], &arr[j]);
@@ -52,7 +52,7 @@ static	int	partition(int arr[], int low, int high)
 	return (i + 1);
 }
 
-static	void	quick_sort(int arr[], int low, int high)
+static	void	quick_sort(int *arr, int low, int high)
 {
 	int	pi;
 
@@ -63,6 +63,25 @@ static	void	quick_sort(int arr[], int low, int high)
 		quick_sort(arr, pi + 1, high);
 	}
 }
+
+// static	void	bubbleSort(int *arr, int n)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < n - 1)
+// 	{
+// 		j = 0;
+// 		while (j < (n-i-1))
+// 		{
+// 			if (arr[j] > arr[j+1])
+// 				swap(&arr[j], &arr[j+1]);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 int	get_midpoint_a(t_stack *stack, int chanck_len, int fixed_len)
 {
@@ -76,6 +95,7 @@ int	get_midpoint_a(t_stack *stack, int chanck_len, int fixed_len)
 	if (!newarr)
 		exit(-1);
 	quick_sort(newarr, 0, stack->a_len - 1);
+	// bubbleSort(newarr, stack->a_len);
 	i = (chanck_len / 2);
 	res = newarr[i];
 	if (chanck_len == fixed_len)

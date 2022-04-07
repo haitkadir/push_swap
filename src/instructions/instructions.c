@@ -37,10 +37,10 @@ void	pb(t_stack *stack, char flag)
 	if (!stack->a_len)
 		return ;
 	tmp = shift_a(stack);
-	rshift_b(stack);
-	stack->b[0] = tmp;
 	stack->a_len--;
 	stack->b_len++;
+	rshift_b(stack);
+	stack->b[0] = tmp;
 	if (flag)
 		ft_printf("pb\n");
 }
@@ -52,10 +52,10 @@ void	pa(t_stack *stack, char flag)
 	if (!stack->b_len)
 		return ;
 	tmp = shift_b(stack);
-	rshift_a(stack);
-	stack->a[0] = tmp;
 	stack->b_len--;
 	stack->a_len++;
+	rshift_a(stack);
+	stack->a[0] = tmp;
 	if (flag)
 		ft_printf("pa\n");
 }

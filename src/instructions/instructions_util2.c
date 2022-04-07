@@ -16,7 +16,7 @@ void	ra(t_stack *stack, char flag)
 {
 	int	tmp;
 
-	if (stack->a_len == 0)
+	if (stack->a_len < 2)
 		return ;
 	tmp = shift_a(stack);
 	stack->a[stack->a_len - 1] = tmp;
@@ -28,7 +28,7 @@ void	rb(t_stack *stack, char flag)
 {
 	int	tmp;
 
-	if (stack->b_len == 0)
+	if (stack->b_len < 2)
 		return ;
 	tmp = shift_b(stack);
 	stack->b[stack->b_len - 1] = tmp;
@@ -40,7 +40,7 @@ void	rra(t_stack *stack, char flag)
 {
 	int	tmp;
 
-	if (stack->a_len == 0)
+	if (stack->a_len < 2)
 		return ;
 	tmp = rshift_a(stack);
 	stack->a[0] = tmp;
@@ -52,7 +52,7 @@ void	rrb(t_stack *stack, char flag)
 {
 	int	tmp;
 
-	if (stack->b_len == 0)
+	if (stack->b_len < 2)
 		return ;
 	tmp = rshift_b(stack);
 	stack->b[0] = tmp;

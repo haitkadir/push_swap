@@ -47,7 +47,7 @@ int	rshift_a(t_stack *stack)
 		return (0);
 	i = stack->a_len - 1;
 	tmp = stack->a[i];
-	while (i > 1)
+	while (i > 0)
 	{
 		stack->a[i] = stack->a[i - 1];
 		i--;
@@ -81,7 +81,7 @@ int	rshift_b(t_stack *stack)
 		return (0);
 	i = stack->b_len - 1;
 	tmp = stack->b[i];
-	while (i > 1)
+	while (i > 0)
 	{
 		stack->b[i] = stack->b[i - 1];
 		i--;

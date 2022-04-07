@@ -29,60 +29,60 @@
 // 	return (1);
 // }
 
-// static char is_one_chunck(t_stack *stack, char flag)
-// {
-// 	int i;
+static char is_one_chunck(t_stack *stack, char flag)
+{
+	int i;
 
-// 	i = 0;
-// 	if (flag == 'a')
-// 	{
-// 		while (i < stack->a_len)
-// 		{
-// 			if (stack->a[i] < stack->a_chunck_min || stack->a[i] > stack->a_chunck_max)
-// 				return (0);
-// 			i++;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (i < stack->b_len)
-// 		{
-// 			if (stack->b[i] < stack->b_chunck_min || stack->b[i] > stack->b_chunck_max)
-// 				return (0);
-// 			i++;
-// 		}
-// 	}
-// 	return (1);
-// }
+	i = 0;
+	if (flag == 'a')
+	{
+		while (i < stack->a_len)
+		{
+			if (stack->a[i] < stack->a_chunck_min || stack->a[i] > stack->a_chunck_max)
+				return (0);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < stack->b_len)
+		{
+			if (stack->b[i] < stack->b_chunck_min || stack->b[i] > stack->b_chunck_max)
+				return (0);
+			i++;
+		}
+	}
+	return (1);
+}
 
-// int is_sorted_a(t_stack *stack, int len, int fixed_len)
-// {
-// 	int i;
-// 	char flag;
-// 	int j = 0;
+int is_sorted_a(t_stack *stack, int len, int fixed_len)
+{
+	int i;
+	char flag;
+	int j = 0;
 
-// 	flag = is_one_chunck(stack, 'a');
+	flag = is_one_chunck(stack, 'a');
 
-// 	i = stack->a_len;
-// 	while (i > 0 && (stack->a[i - 1] >= stack->a_chunck_min) && (stack->a[i - 1] <= stack->a_chunck_max))
-// 	{
-// 		i--;
-// 	}
-// 	if (i >= 0)
-// 	{
-// 		while (--len)
-// 		{
-// 			if (stack->a[i % stack->a_len] > stack->a[(i + 1) % stack->a_len])
-// 			{
-// 				return (0);
-// 			}
-// 			i++;
-// 		}
-// 		while (stack->a[stack->a_len - 1] <= stack->a_chunck_max && stack->a[stack->a_len - 1] >= stack->a_chunck_min && !flag && stack->a_len > 3)
-// 			rra(stack, 1);
-// 	}
-// 	return (1);
-// }
+	i = stack->a_len;
+	while (i > 0 && (stack->a[i - 1] >= stack->a_chunck_min) && (stack->a[i - 1] <= stack->a_chunck_max))
+	{
+		i--;
+	}
+	if (i >= 0)
+	{
+		while (--len)
+		{
+			if (stack->a[i % stack->a_len] > stack->a[(i + 1) % stack->a_len])
+			{
+				return (0);
+			}
+			i++;
+		}
+		while (stack->a[stack->a_len - 1] <= stack->a_chunck_max && stack->a[stack->a_len - 1] >= stack->a_chunck_min && !flag && stack->a_len > 3)
+			rra(stack, 1);
+	}
+	return (1);
+}
 
 // int is_sorted_b(t_stack *stack, int len, int fixed_len)
 // {
