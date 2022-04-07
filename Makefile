@@ -56,6 +56,13 @@ src/the_recipe/quicksort.c src/the_recipe/push_b.c \
 src/the_recipe/push_b_util.c src/the_recipe/push_a_util.c src/the_recipe/push_a.c \
 src/the_recipe/get_midpoint_b.c 
 
+BSRC = src/errors/errors_handling.c src/errors/errors_handling_util.c \
+src/free_allocation.c src/parsing/parsing.c \
+src/instructions/instructions.c src/instructions/instructions_util1.c \
+src/instructions/instructions_util2.c src/instructions/instructions_util3.c \
+bonus/gnl/get_next_line.c bonus/gnl/get_next_line_utils.c \
+bonus/checker.c
+
 all: banner $(NAME)
 
 banner:
@@ -69,7 +76,12 @@ $(NAME): $(SRC) $(ASSETS)
 	@make -C assets/ft_printf/
 	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(SRC) -o $(NAME) -g
 	@echo $(BCyan)"\npush_swap program is ready to use"$(Color_Off)
-	@echo $(BGreen)"\nUsage: ./push_swap numbers to sort here"$(Color_Off)
+	@echo $(BGreen)"\nUsage: ./push_swap <numbers to sort>"$(Color_Off)
+
+bonus: all $(BSRC)
+	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(BSRC) -o checker
+	@echo $(BCyan)"\nBonus compiled successfuly"$(Color_Off)
+	@echo $(BGreen)"\nUsage: ./push_swap <numbers to sort> | ./checker <numbers to sort>"$(Color_Off)
 
 clean:
 	@make clean -C assets/libft/

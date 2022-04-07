@@ -116,7 +116,6 @@ int is_sorted_a(t_stack *stack, int len, int fixed_len)
 // 		// exit(0);
 // 		while (j)
 // 		{
-// 			i++;
 // 			pa(stack, 1);
 // 			j--;
 // 		}

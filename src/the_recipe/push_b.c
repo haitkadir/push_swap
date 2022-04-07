@@ -55,7 +55,7 @@ void	push_b(t_stack *stack, int len, int fixed_len)
 	len_to_push = n_to_pb(stack, stack->a_len);
 	if (is_sorted_a(stack, len, fixed_len))
 		return ;
-	if (len == 2)
+	else if (len == 2)
 	{
 		sort_tow(stack);
 		return ;
