@@ -1,37 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: haitkadi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/08 05:30:52 by haitkadi          #+#    #+#             */
+/*   Updated: 2022/04/08 05:30:54 by haitkadi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../src/push_swap.h"
 #include "./gnl/get_next_line.h"
 #include <string.h>
 
-static char check_apllay(t_stack *stack, char *instruction)
+static	char	check_apllay(t_stack *stack, char *instruction)
 {
 	if (!strncmp(instruction, "pa", 3))
-        pa(stack, 0);
-    else if (!strncmp(instruction, "pb", 3))
-        pb(stack, 0);
-    else if (!strncmp(instruction, "sa", 3))
-        sa(stack, 0);
-    else if (!strncmp(instruction, "sb", 3))
-        sb(stack, 0);
-    else if (!strncmp(instruction, "ss", 3))
-        ss(stack, 0);
-    else if (!strncmp(instruction, "ra", 3))
-        ra(stack, 0);
-    else if (!strncmp(instruction, "rb", 3))
-        rb(stack, 0);
-    else if (!strncmp(instruction, "rr", 3))
-        rr(stack, 0);
-    else if (!strncmp(instruction, "rra", 3))
-        rra(stack, 0);
-    else if (!strncmp(instruction, "rrb", 3))
-        rrb(stack, 0);
-    else if (!strncmp(instruction, "rrr", 3))
-        rrr(stack, 0);
-    else
-        return (1);
+		pa(stack, 0);
+	else if (!strncmp(instruction, "pb", 3))
+		pb(stack, 0);
+	else if (!strncmp(instruction, "sa", 3))
+		sa(stack, 0);
+	else if (!strncmp(instruction, "sb", 3))
+		sb(stack, 0);
+	else if (!strncmp(instruction, "ss", 3))
+		ss(stack, 0);
+	else if (!strncmp(instruction, "ra", 3))
+		ra(stack, 0);
+	else if (!strncmp(instruction, "rb", 3))
+		rb(stack, 0);
+	else if (!strncmp(instruction, "rr", 3))
+		rr(stack, 0);
+	else if (!strncmp(instruction, "rra", 3))
+		rra(stack, 0);
+	else if (!strncmp(instruction, "rrb", 3))
+		rrb(stack, 0);
+	else if (!strncmp(instruction, "rrr", 3))
+		rrr(stack, 0);
+	else
+		return (1);
 	return (0);
 }
 
-static char read_instrucitons(t_stack *stack)
+static	char	read_instrucitons(t_stack *stack)
 {
 	char	*instruction;
 	char	*trimed_str;
@@ -51,9 +63,9 @@ static char read_instrucitons(t_stack *stack)
 		trimed_str = ft_strtrim(instruction, " \n");
 		if (ft_strlen(trimed_str) < 2 || ft_strlen(trimed_str) > 3)
 			return (1);
-        if (check_apllay(stack, trimed_str))
+		if (check_apllay(stack, trimed_str))
 			return (1);
-        free(trimed_str);
+		free(trimed_str);
 	}
 	return (0);
 }
@@ -62,7 +74,8 @@ static	void	fill_stack(t_stack **stack, char **args)
 {
 	int	i;
 
-    *stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	*stack = NULL;
+	*stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (!*stack)
 		exit(-1);
 	(**stack).a = (int *)ft_calloc(arr_len(args), sizeof(int));
@@ -82,7 +95,7 @@ static	void	fill_stack(t_stack **stack, char **args)
 	free(args);
 }
 
-static int sorted(t_stack *stack)
+static	int	sorted(t_stack *stack)
 {
 	int	i;
 
@@ -98,27 +111,30 @@ static int sorted(t_stack *stack)
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	char	**arguments;
 	t_stack	*stack;
 
-	arguments = parsing(ac, av);
-	if (!arguments)
-		return (-1);
-	stack = NULL;
-	fill_stack(&stack, arguments);
-	if (read_instrucitons(stack))
-		ft_putstr_fd("\033[4;31merror\033[0m\n", 2);
-	else if (sorted(stack))
-		ft_printf("\033[1;32mOK\033[0m\n");
-	else
-		ft_printf("\033[4;31mKO\033[0m\n");
-	if (stack->a)
-		free(stack->a);
-	if (stack->b)
-		free(stack->b);
-	if (stack)
-		free(stack);
-    return (0);
+	if (ac > 1)
+	{
+		arguments = NULL;
+		arguments = parsing(ac, av);
+		if (!arguments)
+			return (-1);
+		fill_stack(&stack, arguments);
+		if (sorted(stack))
+			ft_printf("\033[1;32mOK\033[0m\n");
+		else
+		{
+			if (read_instrucitons(stack))
+				ft_putstr_fd("\033[4;31merror\033[0m\n", 2);
+			else if (sorted(stack))
+				ft_printf("\033[1;32mOK\033[0m\n");
+			else
+				ft_printf("\033[4;31mKO\033[0m\n");
+		}
+		free_stack(stack);
+	}
+	return (0);
 }

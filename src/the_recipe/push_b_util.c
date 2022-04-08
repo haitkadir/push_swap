@@ -54,3 +54,58 @@ int	best_move_a(t_stack *stack)
 	}
 	return (final_moves);
 }
+
+static	char	is_one_chunck(t_stack *stack, char flag)
+{
+	int	i;
+
+	i = 0;
+	if (flag == 'a')
+	{
+		while (i < stack->a_len)
+		{
+			if (stack->a[i] < stack->a_chunck_min \
+			|| stack->a[i] > stack->a_chunck_max)
+				return (0);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < stack->b_len)
+		{
+			if (stack->b[i] < stack->b_chunck_min \
+			|| stack->b[i] > stack->b_chunck_max)
+				return (0);
+			i++;
+		}
+	}
+	return (1);
+}
+
+int	is_sorted_a(t_stack *stack, int fixed_len)
+{
+	int		i;
+	char	flag;
+
+	flag = is_one_chunck(stack, 'a');
+	i = stack->a_len;
+	while (i > 0 && (stack->a[i - 1] >= stack->a_chunck_min) \
+	&& (stack->a[i - 1] <= stack->a_chunck_max))
+		i--;
+	if (i >= 0)
+	{
+		while (--fixed_len)
+		{
+			if (stack->a[i % stack->a_len] > stack->a[(i + 1) % stack->a_len])
+			{
+				return (0);
+			}
+			i++;
+		}
+		while (stack->a[stack->a_len - 1] <= stack->a_chunck_max \
+		&& stack->a[stack->a_len - 1] >= stack->a_chunck_min && !flag)
+			rra(stack, 1);
+	}
+	return (1);
+}

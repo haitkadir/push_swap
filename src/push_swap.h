@@ -46,6 +46,7 @@ int		check_is_number(int ac, char **av);
 int		handle_input_errs(int ac, char **args);
 /*------------------------------- Free memory --------------------------------*/
 void	free_2d_arr(char **arr);
+void	free_stack(t_stack *stack);
 /*------------------------------- instructions -------------------------------*/
 void	swap(int *a, int *b);
 int		shift_a(t_stack *stack);
@@ -67,8 +68,7 @@ void	rrr(t_stack *stack, char flag);
 /*------------------------------- Sorting algorithm --------------------------*/
 int		get_midpoint_a(t_stack *stack, int chanck_len, int fixed_len);
 int		get_midpoint_b(t_stack *stack, int chanck_len, int fixed_len);
-int		is_sorted_a(t_stack *stack, int len, int fixed_len);
-int		is_sorted_b(t_stack *stack, int len, int fixed_len);
+int		is_sorted_a(t_stack *stack, int fixed_len);
 /*------------------------------- Push to B ---------------------------------*/
 int		n_to_pb(t_stack *stack, int len);
 int		best_move_a(t_stack *stack);

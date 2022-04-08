@@ -18,7 +18,10 @@ static	void	sort_tow(t_stack *stack)
 		rra(stack, 1);
 	if (stack->a[stack->a_len - 1] <= stack->pivot_a && stack->a_len > 3)
 		rra(stack, 1);
-	if (stack->a[0] > stack->a[1])
+	if (stack->a[0] > stack->a[1] && stack->b[0] < stack->b[1] \
+	&& stack->b_len > 1)
+		ss(stack, 1);
+	else if (stack->a[0] > stack->a[1])
 		sa(stack, 1);
 }
 
@@ -53,7 +56,7 @@ void	push_b(t_stack *stack, int len, int fixed_len)
 
 	stack->pivot_a = get_midpoint_a(stack, len, fixed_len);
 	len_to_push = n_to_pb(stack, stack->a_len);
-	if (is_sorted_a(stack, len, fixed_len))
+	if (is_sorted_a(stack, fixed_len))
 		return ;
 	else if (len == 2)
 	{

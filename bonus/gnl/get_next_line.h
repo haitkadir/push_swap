@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define BUFFER_SIZE 3
+
 size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

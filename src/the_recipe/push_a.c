@@ -18,6 +18,9 @@ static	void	sort_tow(t_stack *stack)
 		rrb(stack, 1);
 	if (stack->b[stack->b_len - 1] >= stack->pivot_b && stack->b_len > 3)
 		rrb(stack, 1);
+	if (stack->b[0] < stack->b[1] && stack->a[0] > stack->a[1] \
+	&& stack->a_len > 1)
+		ss(stack, 1);
 	if (stack->b[0] < stack->b[1])
 		sb(stack, 1);
 	pa(stack, 1);
@@ -55,8 +58,6 @@ void	push_a(t_stack *stack, int len, int fixed_len)
 
 	stack->pivot_b = get_midpoint_b(stack, len, fixed_len);
 	len_to_push = n_to_pa(stack, stack->b_len);
-	// if (is_sorted_b(stack, len, fixed_len))
-	// 	return ;
 	if (len == 2)
 	{
 		sort_tow(stack);
@@ -64,7 +65,7 @@ void	push_a(t_stack *stack, int len, int fixed_len)
 	}
 	else if (len == 1)
 	{
-	if (stack->b[stack->b_len - 1] >= stack->pivot_b && stack->b_len > 3)
+		if (stack->b[stack->b_len - 1] >= stack->pivot_b && stack->b_len > 3)
 			rrb(stack, 1);
 		pa(stack, 1);
 		return ;
