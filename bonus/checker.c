@@ -56,11 +56,12 @@ static	char	read_instrucitons(t_stack *stack)
 	{
 		instruction = get_next_line(STDIN_FILENO);
 		if (!instruction && !flag)
-			return (1);
+			return (free(trimed_str), 1);
 		else if (!instruction)
 			break ;
 		flag = 1;
 		trimed_str = ft_strtrim(instruction, " \n");
+		free(instruction);
 		if (ft_strlen(trimed_str) < 2 || ft_strlen(trimed_str) > 3)
 			return (1);
 		if (check_apllay(stack, trimed_str))

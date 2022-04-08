@@ -11,94 +11,46 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
+static char	*read_from_fd(int fd, char *buf, char *line)
 {
-	char	*str;
+	int		ret;
+	char	*tmp;
 
-	str = (char *)s;
-	while (n > 0)
+	ret = 0;
+	while (1)
 	{
-		*str++ = '\0';
-		n--;
-	}
-}
-
-static	void	iter_file_output(char **line, \
-	char **buf, int *ret, int fd)
-{
-	char	*temp;
-
-	while (!ft_strchr(*line, '\n'))
-	{
-		*ret = read(fd, *buf, BUFFER_SIZE);
-		if (*ret <= 0)
+		ret = read(fd, buf, 1);
+		if (ret <= 0)
 			break ;
-		else
+		if (line)
 		{
-			if (*line)
-			{
-				temp = *line;
-				*line = ft_strjoin(*line, *buf);
-				free(temp);
-				if (!*line)
-					return ;
-			}
-			else
-				*line = ft_strdup(*buf);
-			ft_bzero(*buf, BUFFER_SIZE);
+			tmp = line;
+			line = NULL;
+			line = ft_strjoin(tmp, buf);
+			free(tmp);
 		}
+		else
+			line = ft_strdup(buf);
+		if (!line)
+			exit(-1);
+		if (buf[0] == '\n')
+			break ;
+		buf[0] = 0;
 	}
-}
-
-static	void	the_recipe(char **the_rest, char **line)
-{
-	char	*temp;
-	char	*ptr_to_nl;
-
-	ptr_to_nl = NULL;
-	if (ft_strchr(*line, '\n'))
-		ptr_to_nl = ft_strchr(*line, '\n');
-	temp = 0;
-	if (ptr_to_nl && *(ptr_to_nl + 1))
-	{
-		temp = *line;
-		*line = 0;
-		*the_rest = ft_strdup(ft_strchr(temp, '\n') + 1);
-		if (!*the_rest)
-			return ;
-		ft_bzero(ft_strchr(temp, '\n') + 1, \
-			ft_strlen((ft_strchr(temp, '\n') + 1)));
-		*line = ft_strdup(temp);
-		free(temp);
-		if (!*line)
-			return ;
-	}
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*buf;
-	char		*line;
-	static char	*the_rest;
-	int			ret;
+	char	*line;
+	char	*buf;
 
+	buf = NULL;
 	line = NULL;
-	buf = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	buf = (char *)ft_calloc(2, sizeof(char));
 	if (!buf)
-		return (0);
-	if (fd >= 0)
-	{
-		if (the_rest)
-		{
-			line = ft_strdup(the_rest);
-			if (!line)
-				return (0);
-			free(the_rest);
-			the_rest = 0;
-		}
-		iter_file_output(&line, &buf, &ret, fd);
-		the_recipe(&the_rest, &line);
-	}
+		exit(-1);
+	line = read_from_fd(fd, buf, line);
 	free(buf);
 	return (line);
 }

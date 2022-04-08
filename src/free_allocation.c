@@ -31,10 +31,12 @@ void	free_2d_arr(char **arr)
 
 void	free_stack(t_stack *stack)
 {
-	if (stack->a)
-		free(stack->a);
-	if (stack->b)
-		free(stack->b);
 	if (stack)
+	{
+		if (stack->a)
+			free(stack->a);
+		if (stack->b)
+			free(stack->b);
 		free(stack);
+	}
 }

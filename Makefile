@@ -60,8 +60,7 @@ BSRC = src/errors/errors_handling.c src/errors/errors_handling_util.c \
 src/free_allocation.c src/parsing/parsing.c \
 src/instructions/instructions.c src/instructions/instructions_util1.c \
 src/instructions/instructions_util2.c src/instructions/instructions_util3.c \
-bonus/gnl/get_next_line.c bonus/gnl/get_next_line_utils.c \
-bonus/checker.c
+bonus/gnl/get_next_line.c bonus/checker.c
 
 all: banner $(NAME)
 
@@ -79,7 +78,7 @@ $(NAME): $(SRC) $(ASSETS)
 	@echo $(BGreen)"\nUsage: ./push_swap <numbers to sort>"$(Color_Off)
 
 bonus: all $(BSRC)
-	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(BSRC) -o checker
+	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(BSRC) -o checker -g
 	@echo $(BCyan)"\nBonus compiled successfuly"$(Color_Off)
 	@echo $(BGreen)"\nUsage: ./push_swap <numbers to sort> | ./checker <numbers to sort>"$(Color_Off)
 
