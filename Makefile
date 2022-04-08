@@ -6,7 +6,7 @@
 #    By: haitkadi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/12 18:19:57 by haitkadi          #+#    #+#              #
-#    Updated: 2022/03/12 18:20:02 by haitkadi         ###   ########.fr        #
+#    Updated: 2022/04/08 23:27:41 by haitkadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,12 +73,12 @@ banner:
 $(NAME): $(SRC) $(ASSETS)
 	@make bonus -C assets/libft/
 	@make -C assets/ft_printf/
-	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(SRC) -o $(NAME) -g
+	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(SRC) -o $(NAME)
 	@echo $(BCyan)"\npush_swap program is ready to use"$(Color_Off)
 	@echo $(BGreen)"\nUsage: ./push_swap <numbers to sort>"$(Color_Off)
 
 bonus: all $(BSRC)
-	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(BSRC) -o checker -g
+	@$(CC) $(CFLAGS) $(LIBFT) $(PRINTF) $(ASSETS) $(BSRC) -o checker
 	@echo $(BCyan)"\nBonus compiled successfuly"$(Color_Off)
 	@echo $(BGreen)"\nUsage: ./push_swap <numbers to sort> | ./checker <numbers to sort>"$(Color_Off)
 
