@@ -92,6 +92,7 @@ fclean:
 	@make fclean -C assets/libft/
 	@make fclean -C assets/ft_printf/
 	@rm -f $(NAME)
+	@rm -f checker
 	@echo $(BRed)"\nFull cleaning applied successfuly"$(Color_Off)
 
 re: fclean all
